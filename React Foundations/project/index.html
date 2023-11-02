@@ -1,0 +1,23 @@
+<html>
+  <body>
+    <div id="app"></div>
+
+    <script type="text/javascript">
+      // 'app' id를 가진 div 요소 선택
+      const app = document.getElementById('app');
+
+      // 새로운 H1 요소 만들기
+      const header = document.createElement('h1');
+
+      // H1 요소용 새 텍스트 노드 생성
+      const text = 'Develop. Preview. Ship. 🚀';
+      const headerContent = document.createTextNode(text);
+
+      // 텍스트를 H1 요소에 추가
+      header.appendChild(headerContent);
+
+      // H1 요소를 div 안에 배치
+      app.appendChild(header);
+    </script>
+  </body>
+</html>
