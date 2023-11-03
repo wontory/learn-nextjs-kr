@@ -46,11 +46,15 @@ React를 프로젝트에서 사용하려면 [unpkg.com](https://unpkg.com/)이�
 
 이것은 `<h1>...</h1>`이 유효한 JavaScript가 아니기 때문입니다. 이러한 코드는 JSX입니다.
 
+&nbsp;
+
 ### JSX란 무엇인가요?
 
 JSX는 JavaScript의 구문 확장으로, 익숙한 HTML과 유사한 구문을 사용하여 UI를 설명할 수 있게 해줍니다. JSX의 좋은 점은 [JSX 규칙 세 가지](https://react.dev/learn/writing-markup-with-jsx#the-rules-of-jsx)을 따르는 것 외에도 HTML과 JavaScript 외에는 새로운 기호나 구문을 배울 필요가 없다는 것입니다.
 
 브라우저는 JSX를 기본적으로 이해하지 않으므로 JSX 코드를 일반 JavaScript로 변환하기 위해 [Babel](https://babeljs.io/)과 같은 JavaScript 컴파일러가 필요합니다.
+
+&nbsp;
 
 ### 프로젝트에 Babel 추가하기
 
@@ -106,7 +110,11 @@ React를 사용하면 반복적인 코드를 대부분 줄일 수 있음을 알 
 
 이것이 바로 React가 하는 일입니다. React는 재사용 가능한 코드 조각을 포함하는 라이브러리로, 여기서는 UI를 업데이트하는 작업을 대신 수행합니다.
 
-> 참고: React가 UI를 어떻게 업데이트하는지 정확히 알 필요는 없지만 더 알고 싶다면 React 문서의 [UI trees](https://react.dev/learn/preserving-and-resetting-state#the-ui-tree)와 [react-dom/server](https://react.dev/reference/react-dom/server) 섹션을 살펴보세요.
+&nbsp;
+
+> **참고**: React가 UI를 어떻게 업데이트하는지 정확히 알 필요는 없지만 더 알고 싶다면 React 문서의 [UI trees](https://react.dev/learn/preserving-and-resetting-state#the-ui-tree)와 [react-dom/server](https://react.dev/reference/react-dom/server) 섹션을 살펴보세요.
+
+&nbsp;
 
 > 추가 자료:
 >
