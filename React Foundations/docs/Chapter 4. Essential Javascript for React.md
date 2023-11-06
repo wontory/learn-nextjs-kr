@@ -6,7 +6,7 @@ Chapter 4
 
 다음 섹션에서는 자바스크립트 관점에서 React의 핵심 개념을 소개하겠습니다. 다음은 언급될 자바스크립트 주제에 대한 요약입니다:
 
-- [함수](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Functions) and [화살표 함수 표현식](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
+- [함수](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Functions)와 [화살표 함수 표현식](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
 - [객체](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)
 - [배열과 배열 메서드](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)
 - [구조 분해 할당](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
