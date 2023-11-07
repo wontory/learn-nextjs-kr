@@ -48,7 +48,7 @@ React를 프로젝트에서 사용하려면 [unpkg.com](https://unpkg.com/)이�
 
 &nbsp;
 
-## JSX란 무엇인가요?
+### JSX란 무엇인가요?
 
 JSX는 JavaScript의 구문 확장으로, 익숙한 HTML과 유사한 구문을 사용하여 UI를 설명할 수 있게 해줍니다. JSX의 좋은 점은 [JSX 규칙 세 가지](https://react.dev/learn/writing-markup-with-jsx#the-rules-of-jsx)을 따르는 것 외에도 HTML과 JavaScript 외에는 새로운 기호나 구문을 배울 필요가 없다는 것입니다.
 
@@ -56,7 +56,7 @@ JSX는 JavaScript의 구문 확장으로, 익숙한 HTML과 유사한 구문을 
 
 &nbsp;
 
-## 프로젝트에 Babel 추가하기
+### 프로젝트에 Babel 추가하기
 
 프로젝트에 Babel을 추가하려면 `index.html` 파일에 다음 스크립트를 복사 및 붙여넣어야 합니다:
 
