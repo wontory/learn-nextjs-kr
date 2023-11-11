@@ -4,6 +4,8 @@
 
 이전 장에서는 Next.js 애플리케이션을 스타일링하는 방법에 대해 배웠습니다. 사용자 정의 글꼴 및 히어로 이미지를 추가하여 홈 페이지 작업을 계속해 보겠습니다.
 
+&nbsp;
+
 > ## 이 장에서는...
 >
 > 다음과 같은 주제들을 다룰 예정입니다.
@@ -12,7 +14,11 @@
 > - `next/image`를 사용하여 이미지 추가하는 방법
 > - Next.js에서 글꼴과 이미지가 어떻게 최적화되는지
 
+&nbsp;
+
 ---
+
+&nbsp;
 
 ## 왜 글꼴을 최적화해야 할까요?
 
@@ -23,6 +29,8 @@
 ![페이지의 초기 로드를 보여주는 모의 UI, 사용자 정의 글꼴 로드 시 레이아웃 시프트](https://nextjs.org/_next/image?url=%2Flearn%2Flight%2Ffont-layout-shift.png&w=3840&q=75&dpl=dpl_3h1BESzeFKFcy7pGi2Svm9s7FMVm)
 
 Next.js는 `next/font` 모듈을 사용할 때 애플리케이션에서 글꼴을 자동으로 최적화합니다. 이 모듈을 사용하면 글꼴 파일을 빌드 시 다운로드하고 다른 정적 애셋과 함께 호스팅합니다. 이렇게 하면 사용자가 애플리케이션을 방문할 때 글꼴에 대한 추가 네트워크 요청이 없으므로 성능에 영향을 미치지 않습니다.
+
+&nbsp;
 
 > ### 퀴즈 시간입니다!
 >
@@ -39,7 +47,11 @@ Next.js는 `next/font` 모듈을 사용할 때 애플리케이션에서 글꼴�
 >
 > **D: 글꼴 파일을 다른 정적 애셋과 함께 호스팅하여 추가적인 네트워크 요청이 없도록 합니다.**
 
+&nbsp;
+
 ---
+
+&nbsp;
 
 ## 주요 글꼴 추가하기
 
@@ -88,7 +100,11 @@ export default function RootLayout({
 
 브라우저로 이동하여 개발자 도구를 열고 `body` 요소를 선택하십시오. 이제 `Inter` 및 `Inter_Fallback`이 스타일 아래에 적용된 것을 확인할 수 있습니다. 또한 애플리케이션의 특정 요소에도 글꼴을 추가할 수 있습니다.
 
+&nbsp;
+
 ---
+
+&nbsp;
 
 ## 실습: 보조 글꼴 추가하기
 
@@ -96,11 +112,15 @@ export default function RootLayout({
 
 준비가 되면 아래의 코드 스니펫을 확장하여 정답을 확인하세요.
 
+&nbsp;
+
 > **힌트:**
 >
 > - 글꼴에 어떤 두께 옵션을 전달해야 하는지 확실하지 않다면 코드 편집기에서 TypeScript 오류를 확인하세요.
 > - [Google Fonts](https://fonts.google.com/) 웹사이트를 방문하여 `Lusitana`를 검색하여 사용 가능한 옵션을 확인하세요.
 > - [여러 글꼴 추가](https://nextjs.org/docs/app/building-your-application/optimizing/fonts#using-multiple-fonts) 및 [전체 옵션 목록](https://nextjs.org/docs/app/api-reference/components/font#font-function-arguments)에 대한 문서를 참조하세요.
+
+&nbsp;
 
 <details>
 <summary><strong>&nbsp;정답 확인</strong></summary>
@@ -144,6 +164,8 @@ export default function Page() {
 
 </details>
 
+&nbsp;
+
 마지막으로 `<AcmeLogo />` 컴포넌트도 `Lusitana`를 사용합니다. 오류를 방지하기 위해 주석 처리되어 있었으나, 이제 주석 처리를 해제할 수 있습니다.
 
 `/app/page.tsx`
@@ -165,7 +187,11 @@ export default function Page() {
 
 좋습니다! 애플리케이션에 두 개의 사용자 정의 글꼴이 추가되었습니다! 이제 홈 페이지에 히어로 이미지를 추가해 보겠습니다.
 
+&nbsp;
+
 ---
+
+&nbsp;
 
 ## 이미지 최적화는 왜 필요한가요?
 
@@ -191,7 +217,11 @@ Next.js는 이미지와 같은 **정적 자산**을 최상위 [`/public`](https:
 
 이미지 최적화는 웹 개발에서 큰 주제이며 그 자체로 전문 분야로 간주될 수 있습니다. 이러한 최적화를 수동으로 구현하는 대신 `next/image` 컴포넌트를 사용하여 이미지를 자동으로 최적화할 수 있습니다.
 
+&nbsp;
+
 ---
+
+&nbsp;
 
 ## `<Image>` 컴포넌트
 
@@ -202,7 +232,11 @@ Next.js는 이미지와 같은 **정적 자산**을 최상위 [`/public`](https:
 - 기본적으로 이미지를 지연로드 (이미지가 뷰포트에 진입할 때 로드).
 - 브라우저가 지원하는 경우 [WebP](https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Image_types#webp) 및 [AVIF](https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Image_types#avif_image)와 같은 현대적인 포맷으로 이미지 제공.
 
+&nbsp;
+
 ---
+
+&nbsp;
 
 # 데스크톱 히어로 이미지 추가
 
@@ -244,7 +278,11 @@ export default function Page() {
 
 ![커스텀 폰트와 히어로 이미지가 있는 스타일이 적용된 홈페이지](https://nextjs.org/_next/image?url=%2Flearn%2Flight%2Fhome-page-with-hero.png&w=1920&q=75&dpl=dpl_3h1BESzeFKFcy7pGi2Svm9s7FMVm)
 
+&nbsp;
+
 ---
+
+&nbsp;
 
 ## 연습: 모바일 히어로 이미지 추가
 
@@ -254,6 +292,8 @@ export default function Page() {
 - 모바일 화면에서 보이고 데스크톱에서는 숨겨져야 합니다 - 데스크톱 및 모바일 이미지가 올바르게 교체되었는지 확인하려면 개발 도구를 사용하세요.
 
 준비가 되었으면 아래의 코드 스니펫을 확장하여 정답을 확인하세요.
+
+&nbsp;
 
 <details>
 <summary><strong>&nbsp;정답 확인</strong></summary>
@@ -293,7 +333,11 @@ export default function Page() {
 
 </details>
 
+&nbsp;
+
 좋습니다! 이제 홈페이지에는 커스텀 폰트와 히어로 이미지가 있습니다.
+
+&nbsp;
 
 > ### 퀴즈 시간입니다!
 >
@@ -310,7 +354,11 @@ export default function Page() {
 >
 > **A: 참**
 
+&nbsp;
+
 ---
+
+&nbsp;
 
 ## 추천하는 읽을거리
 
