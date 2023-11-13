@@ -4,6 +4,8 @@ Chapter 5
 
 이전 장에서는 대시보드 레이아웃과 페이지를 만들었습니다. 이제 대시보드 경로들 간에 이동할 수 있도록 몇 가지 링크를 추가해 봅시다.
 
+&nbsp;
+
 > ### 이 장에서는...
 >
 > 다음과 같은 주제들을 다룰 예정입니다.
@@ -12,7 +14,11 @@ Chapter 5
 > - `usePathname()` 훅을 사용하여 활성화된 링크 표시하는 방법
 > - Next.js에서 페이지 이동이 작동하는 방법
 
+&nbsp;
+
 ---
+
+&nbsp;
 
 ## 페이지 이동 최적화의 필요성
 
@@ -22,7 +28,11 @@ Chapter 5
 
 각 페이지 이동 시 전체 페이지가 새로 고침됩니다!
 
+&nbsp;
+
 ---
+
+&nbsp;
 
 ## `<Link>` 컴포넌트
 
@@ -67,6 +77,8 @@ export default function NavLinks() {
 
 변경 사항을 저장하고 localhost에서 작동하는지 확인하세요. 이제 새로 고침 없이 페이지 간에 이동이 가능해야 합니다. 애플리케이션의 일부가 서버에서 렌더링되기는 하지만 전체 페이지 새로 고침이 없어 웹 앱처럼 느껴집니다. 왜 그럴까요?
 
+&nbsp;
+
 ### 자동 코드 분할 및 사전 로딩
 
 페이지 이동 경험을 향상시키기 위해 Next.js는 라우트 세그먼트별로 애플리케이션 코드를 자동으로 분할합니다. 이는 브라우저가 초기 로드 시 모든 애플리케이션 코드를 로드하는 전통적인 React [싱글 페이지 애플리케이션](https://developer.mozilla.org/en-US/docs/Glossary/SPA)과 다릅니다.
@@ -76,6 +88,8 @@ export default function NavLinks() {
 또한 production 환경에서 브라우저 뷰포트에 [`<Link>`](https://nextjs.org/docs/api-reference/next/link) 컴포넌트가 나타나면 Next.js가 자동으로 연결된 경로의 코드를 백그라운드에서 **사전로드(prefetches)**합니다. 사용자가 링크를 클릭할 때 대상 페이지의 코드는 이미 백그라운드에서 로드되어 페이지 전환이 거의 즉시 발생합니다!
 
 자세한 내용은 [페이지 이동이 작동하는 방법](https://nextjs.org/docs/app/building-your-application/routing/linking-and-navigating#how-routing-and-navigation-works)을 확인하세요.
+
+&nbsp;
 
 > ### 퀴즈 시간!
 >
@@ -94,7 +108,11 @@ export default function NavLinks() {
 >
 > **C: 연결된 경로의 코드 사전로드**
 
+&nbsp;
+
 ---
+
+&nbsp;
 
 ## 패턴: 활성화된 링크 표시
 
