@@ -76,7 +76,7 @@ GitHub 리포지토리를 연결함으로써, 변경 사항을 **main** 브랜�
 
 ![Postgres 옵션과 KV, Blob 및 Edge Config이 표시된 Connect Store 화면](https://nextjs.org/_next/image?url=%2Flearn%2Flight%2Fcreate-database.png&w=1920&q=75&dpl=dpl_H7MBMnAb8vFgYfWdWcJLkssQPv5e)
 
-약관을 수락하고 데이터베이스에 이름을 지정하고 데이터베이스 지역을 **Washington D.C (iad1)**로 설정하세요 - 이는 또한 모든 새로운 Vercel 프로젝트의 [기본 지역](https://vercel.com/docs/functions/serverless-functions/regions#select-a-default-serverless-region)입니다. 데이터베이스를 응용 프로그램 코드와 같은 지역이나 가까운 곳에 배치하면 데이터 요청의 [지연 시간](https://developer.mozilla.org/en-US/docs/Web/Performance/Understanding_latency)을 줄일 수 있습니다.
+약관을 수락하고 데이터베이스에 이름을 지정하고 데이터베이스 지역을 **Washington D.C (iad1)** 로 설정하세요 - 이는 또한 모든 새로운 Vercel 프로젝트의 [기본 지역](https://vercel.com/docs/functions/serverless-functions/regions#select-a-default-serverless-region)입니다. 데이터베이스를 응용 프로그램 코드와 같은 지역이나 가까운 곳에 배치하면 데이터 요청의 [지연 시간](https://developer.mozilla.org/en-US/docs/Web/Performance/Understanding_latency)을 줄일 수 있습니다.
 
 ![데이터베이스 생성 모달, 데이터베이스 이름과 지역이 표시됩니다](https://nextjs.org/_next/image?url=%2Flearn%2Flight%2Fdatabase-region.png&w=1920&q=75&dpl=dpl_H7MBMnAb8vFgYfWdWcJLkssQPv5e)
 
@@ -86,7 +86,7 @@ GitHub 리포지토리를 연결함으로써, 변경 사항을 **main** 브랜�
 
 ![숨김 처리된 데이터베이스 비밀 키를 보여주는 .env.local 탭](https://nextjs.org/_next/image?url=%2Flearn%2Flight%2Fdatabase-dashboard.png&w=1920&q=75&dpl=dpl_H7MBMnAb8vFgYfWdWcJLkssQPv5e)
 
-코드 에디터로 이동하여 `.env.example` 파일을 **`.env`**로 이름을 변경하세요. Vercel에서 복사한 내용을 붙여넣으세요.
+코드 에디터로 이동하여 `.env.example` 파일을 **`.env`** 로 이름을 변경하세요. Vercel에서 복사한 내용을 붙여넣으세요.
 
 **중요**: `.gitignore` 파일로 이동하여 `.env`가 무시되도록 하여 GitHub에 푸시할 때 데이터베이스 비밀 키가 노출되지 않도록 해야 합니다.
 
@@ -175,7 +175,7 @@ GitHub 리포지토리를 연결함으로써, 변경 사항을 **main** 브랜�
 
 ## 쿼리 실행
 
-"쿼리" 탭으로 전환하여 데이터베이스와 상호작용할 수 있습니다. 이 섹션은 표준 SQL 명령을 지원합니다. 예를 들어 `DROP TABLE customers`를 입력하면 "customers" 테이블과 해당 데이터를 모두 삭제합니다. **_- 그러니 조심하세요_**!
+"쿼리" 탭으로 전환하여 데이터베이스와 상호작용할 수 있습니다. 이 섹션은 표준 SQL 명령을 지원합니다. 예를 들어 `DROP TABLE customers`를 입력하면 "customers" 테이블과 해당 데이터를 모두 삭제합니다. ***- 그러니 조심하세요***!
 
 첫 번째 데이터베이스 쿼리를 실행해봅시다. 아래 SQL 코드를 Vercel 인터페이스에 붙여넣고 실행해보세요:
 
