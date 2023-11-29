@@ -30,7 +30,7 @@
 &nbsp;
 
 <details>
-<summary><strong>&nbsp;솔루션 코드</strong></summary>
+<summary><strong>&nbsp;솔루션 보기</strong></summary>
 
 ![사이드내비게이션은 정적이고 페이지의 하위 컴포넌트들은 동적임을 보여주는 다이어그램](https://nextjs.org/_next/image?url=%2Flearn%2Flight%2Fdashboard-static-dynamic-components.png&w=3840&q=75&dpl=dpl_GiVfqc4GYKo9bJZpv3zgNq5S6GFJ)
 

@@ -257,7 +257,7 @@ export default async function RevenueChart() { // 컴포넌트를 async로 변�
 &nbsp;
 
 <details>
-<summary><strong>&nbsp;솔루션 코드</strong></summary>
+<summary><strong>&nbsp;솔루션 보기</strong></summary>
 
 대시보드 페이지:
 

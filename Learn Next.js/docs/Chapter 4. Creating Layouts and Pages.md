@@ -77,7 +77,7 @@ export default function Page() {
 이 연습에 도전해보세요. 준비가 되면 아래의 토글을 펼쳐서 정답을 확인하세요:
 
 <details>
-<summary><strong>&nbsp;정답 확인</strong></summary>
+<summary><strong>&nbsp;솔루션 보기</strong></summary>
 
 다음과 같은 폴더 구조가 되어야 합니다:
 

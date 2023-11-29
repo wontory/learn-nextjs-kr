@@ -317,7 +317,7 @@ const customerCountPromise = sql`SELECT COUNT(*) FROM customers`;
 &nbsp;
 
 <details>
-<summary><strong>&nbsp;정답 확인</strong></summary>
+<summary><strong>&nbsp;솔루션 보기</strong></summary>
 
 `/app/dashboard/page.tsx`
 
