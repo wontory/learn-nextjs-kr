@@ -1,38 +1,40 @@
+# Chapter 9. Streaming
+
 Chapter 9
 
-# 스트리밍
+## 스트리밍
 
 이전 장에서는 대시보드 페이지를 동적으로 만들었지만, 느린 데이터 가져오기가 애플리케이션의 성능에 어떤 영향을 미칠 수 있는지에 대해 논의했습니다. 느린 데이터 요청이 있을 때 사용자 경험을 어떻게 개선할 수 있는지 살펴봅시다.
 
-&nbsp;
+&#x20;
 
-> ### 이번 장에서는...
+> #### 이번 장에서는...
 >
 > 다음과 같은 내용을 다룰 예정입니다.
 >
-> - 스트리밍이 무엇이며 언제 사용하는지
-> - `loading.tsx`와 Suspense를 사용한 스트리밍 구현 방법
-> - 로딩 스켈레톤은 무엇인가
-> - 라우트 그룹은 무엇이며 언제 사용하는지
-> - 애플리케이션에서 Suspense 경계를 배치하는 위치
+> * 스트리밍이 무엇이며 언제 사용하는지
+> * `loading.tsx`와 Suspense를 사용한 스트리밍 구현 방법
+> * 로딩 스켈레톤은 무엇인가
+> * 라우트 그룹은 무엇이며 언제 사용하는지
+> * 애플리케이션에서 Suspense 경계를 배치하는 위치
 
-&nbsp;
+&#x20;
 
----
+***
 
-&nbsp;
+&#x20;
 
-## 스트리밍이란?
+### 스트리밍이란?
 
 스트리밍은 라우트를 더 작은 "조각"으로 분해하고 준비되는 대로 서버에서 클라이언트로 점진적으로 스트리밍하는 데이터 전송 기술입니다.
 
-![시간에 따른 순차적 데이터 가져오기 및 병렬 데이터 가져오기를 보여주는 다이어그램](https://nextjs.org/_next/image?url=%2Flearn%2Flight%2Fserver-rendering-with-streaming.png&w=3840&q=75&dpl=dpl_HLrzm1iszLgPFzNAQ3hHHL5Lhsu3)
+![시간에 따른 순차적 데이터 가져오기 및 병렬 데이터 가져오기를 보여주는 다이어그램](https://nextjs.org/\_next/image?url=%2Flearn%2Flight%2Fserver-rendering-with-streaming.png\&w=3840\&q=75\&dpl=dpl\_HLrzm1iszLgPFzNAQ3hHHL5Lhsu3)
 
 스트리밍을 통해 느린 데이터 요청이 전체 페이지를 막는 것을 방지할 수 있습니다. 이를 통해 사용자는 모든 UI가 표시되기 전에 페이지의 일부를 볼 수 있고 상호 작용할 수 있습니다.
 
-![시간에 따른 순차적 데이터 가져오기 및 병렬 데이터 가져오기를 보여주는 다이어그램](https://nextjs.org/_next/image?url=%2Flearn%2Flight%2Fserver-rendering-with-streaming-chart.png&w=3840&q=75&dpl=dpl_HLrzm1iszLgPFzNAQ3hHHL5Lhsu3)
+![시간에 따른 순차적 데이터 가져오기 및 병렬 데이터 가져오기를 보여주는 다이어그램](https://nextjs.org/\_next/image?url=%2Flearn%2Flight%2Fserver-rendering-with-streaming-chart.png\&w=3840\&q=75\&dpl=dpl\_HLrzm1iszLgPFzNAQ3hHHL5Lhsu3)
 
-스트리밍은 React의 컴포넌트 모델과 잘 작동합니다. 각 컴포넌트를 *조각(chunk)*으로 생각할 수 있기 때문입니다.
+스트리밍은 React의 컴포넌트 모델과 잘 작동합니다. 각 컴포넌트를 \*조각(chunk)\*으로 생각할 수 있기 때문입니다.
 
 Next.js에서 스트리밍을 구현하는 두 가지 방법이 있습니다:
 
@@ -41,33 +43,33 @@ Next.js에서 스트리밍을 구현하는 두 가지 방법이 있습니다:
 
 어떻게 작동하는지 살펴봅시다.
 
-&nbsp;
+&#x20;
 
-> ### 퀴즈 타임!
+> #### 퀴즈 타임!
 >
 > 지금까지 배운 내용을 테스트해보세요.
 >
 > **스트리밍의 장점 중 하나는 무엇인가요?**
 >
-> - A: 청크 암호화를 통해 데이터 요청이 보안이 강화됩니다.
-> - B: 모든 청크는 완전히 받은 후에만 렌더링됩니다.
-> - C: 청크가 병렬로 렌더링되어 전체 로드 시간이 줄어듭니다.
+> * A: 청크 암호화를 통해 데이터 요청이 보안이 강화됩니다.
+> * B: 모든 청크는 완전히 받은 후에만 렌더링됩니다.
+> * C: 청크가 병렬로 렌더링되어 전체 로드 시간이 줄어듭니다.
 >
-> &nbsp;
+> &#x20;
 >
-> #### 정답 확인
+> **정답 확인**
 >
 > **C: 청크가 병렬로 렌더링되어 전체 로드 시간이 줄어듭니다.**
 >
 > 이 방식의 장점 중 하나는 페이지의 전체 로드 시간을 크게 줄일 수 있다는 점입니다.
 
-&nbsp;
+&#x20;
 
----
+***
 
-&nbsp;
+&#x20;
 
-## `loading.tsx`를 사용하여 전체 페이지 스트리밍하기
+### `loading.tsx`를 사용하여 전체 페이지 스트리밍하기
 
 `/app/dashboard` 폴더에서 `loading.tsx`라는 새 파일을 만듭니다:
 
@@ -81,7 +83,7 @@ export default function Loading() {
 
 [http://localhost:3000/dashboard](http://localhost:3000/dashboard)을 새로 고치면 다음과 같이 표시됩니다:
 
-!['Loading...’ 텍스트가 있는 대시보드 페이지](https://nextjs.org/_next/image?url=%2Flearn%2Flight%2Floading-page.png&w=1920&q=75&dpl=dpl_HLrzm1iszLgPFzNAQ3hHHL5Lhsu3)
+!['Loading...’ 텍스트가 있는 대시보드 페이지](https://nextjs.org/\_next/image?url=%2Flearn%2Flight%2Floading-page.png\&w=1920\&q=75\&dpl=dpl\_HLrzm1iszLgPFzNAQ3hHHL5Lhsu3)
 
 여기에서 몇 가지 일이 벌어지고 있습니다:
 
@@ -91,9 +93,9 @@ export default function Loading() {
 
 축하합니다! 스트리밍을 구현했습니다. 그러나 사용자 경험을 개선하기 위해 더 할 수 있는 일이 있습니다. `Loading...` 텍스트 대신 로딩 스켈레톤을 표시해보겠습니다.
 
-&nbsp;
+&#x20;
 
-### 로딩 스켈레톤 추가
+#### 로딩 스켈레톤 추가
 
 로딩 스켈레톤은 UI의 간소화된 버전입니다.
 
@@ -113,11 +115,11 @@ export default function Loading() {
 
 그런 다음 [http://localhost:3000/dashboard](http://localhost:3000/dashboard)을 새로 고치면 다음과 같이 표시됩니다:
 
-![로딩 스켈레톤이 있는 대시보드 페이지](https://nextjs.org/_next/image?url=%2Flearn%2Flight%2Floading-page-with-skeleton.png&w=1920&q=75&dpl=dpl_HLrzm1iszLgPFzNAQ3hHHL5Lhsu3)
+![로딩 스켈레톤이 있는 대시보드 페이지](https://nextjs.org/\_next/image?url=%2Flearn%2Flight%2Floading-page-with-skeleton.png\&w=1920\&q=75\&dpl=dpl\_HLrzm1iszLgPFzNAQ3hHHL5Lhsu3)
 
-&nbsp;
+&#x20;
 
-### 라우트 그룹을 사용하여 로딩 스켈레톤 버그 수정
+#### 라우트 그룹을 사용하여 로딩 스켈레톤 버그 수정
 
 현재 로딩 스켈레톤은 송장 및 고객 페이지에도 적용될 것입니다.
 
@@ -125,7 +127,7 @@ export default function Loading() {
 
 이 문제를 [라우트 그룹](https://nextjs.org/docs/app/building-your-application/routing/route-groups)을 사용하여 수정할 수 있습니다. `/(overview)`라는 새 폴더를 `dashboard` 폴더 내에 만든 후 `loading.tsx` 및 `page.tsx` 파일을 해당 폴더로 이동하세요:
 
-![괄호를 사용하여 라우트 그룹을 만드는 폴더 구조](https://nextjs.org/_next/image?url=%2Flearn%2Flight%2Froute-group.png&w=3840&q=75&dpl=dpl_HLrzm1iszLgPFzNAQ3hHHL5Lhsu3)
+![괄호를 사용하여 라우트 그룹을 만드는 폴더 구조](https://nextjs.org/\_next/image?url=%2Flearn%2Flight%2Froute-group.png\&w=3840\&q=75\&dpl=dpl\_HLrzm1iszLgPFzNAQ3hHHL5Lhsu3)
 
 이제 `loading.tsx` 파일은 대시보드 개요 페이지에만 적용됩니다.
 
@@ -133,9 +135,9 @@ export default function Loading() {
 
 여기서 라우트 그룹을 사용하여 `loading.tsx`가 대시보드 개요 페이지에만 적용되도록합니다. 그러나 라우트 그룹은 애플리케이션을 `(마케팅)` 라우트 및 `(쇼핑)` 라우트와 같은 섹션으로 또는 더 큰 애플리케이션에는 팀별로 분리하기 위해서도 사용할 수 있습니다.
 
-&nbsp;
+&#x20;
 
-### 컴포넌트 스트리밍
+#### 컴포넌트 스트리밍
 
 지금까지 전체 페이지를 스트리밍하고 있었습니다. 하지만 React Suspense를 사용하여 더 세분화된 방식으로 특정 컴포넌트를 스트리밍할 수 있습니다.
 
@@ -244,9 +246,9 @@ export default async function RevenueChart() { // 컴포넌트를 async로 변�
 
 이제 페이지를 새로 고침하면 거의 즉시 대시보드 정보를 볼 수 있지만, `<RevenueChart>`에는 대체 스켈레톤이 표시될 것입니다.
 
-&nbsp;
+&#x20;
 
-### 실습: `<LatestInvoices>` 스트리밍
+#### 실습: `<LatestInvoices>` 스트리밍
 
 이제 여러분 차례입니다! 방금 배운 내용을 바탕으로 `<LatestInvoices>` 컴포넌트를 스트리밍해 보세요.
 
@@ -254,10 +256,11 @@ export default async function RevenueChart() { // 컴포넌트를 async로 변�
 
 준비가 되면 토글을 확장하여 솔루션 코드를 볼 수 있습니다:
 
-&nbsp;
+&#x20;
 
 <details>
-<summary><strong>&nbsp;솔루션 보기</strong></summary>
+
+<summary> <strong>솔루션 보기</strong></summary>
 
 대시보드 페이지:
 
@@ -336,15 +339,15 @@ export default async function LatestInvoices() { // props 삭제
 
 </details>
 
-&nbsp;
+&#x20;
 
----
+***
 
-&nbsp;
+&#x20;
 
-## 컴포넌트 그룹화
+### 컴포넌트 그룹화
 
-좋습니다! 거의 다 왔습니다. 이제 `<Card>` 컴포넌트를 Suspense로 감싸야 합니다. 각각의 카드에 대한 데이터를 가져올 수 있지만, 이렇게 하면 카드가 로드될 때 UI가 *깜빡*거릴 수 있습니다.
+좋습니다! 거의 다 왔습니다. 이제 `<Card>` 컴포넌트를 Suspense로 감싸야 합니다. 각각의 카드에 대한 데이터를 가져올 수 있지만, 이렇게 하면 카드가 로드될 때 UI가 _깜빡_거릴 수 있습니다.
 
 그렇다면 이 문제를 어떻게 해결할 수 있을까요?
 
@@ -352,11 +355,11 @@ stagger 효과를 위해 wrapper 컴포넌트로 카드들을 그룹화할 수 �
 
 `page.tsx` 파일에서:
 
-- `<Card>` 컴포넌트를 삭제하세요.
-- `fetchCardData()` 함수를 삭제하세요.
-- 새로운 **wrapper** 컴포넌트인 `<CardWrapper />`를 import하세요.
-- 새로운 **스켈레톤** 컴포넌트인 `<CardsSkeleton />`을 import하세요.
-- `<CardWrapper />`를 Suspense로 감싸세요.
+* `<Card>` 컴포넌트를 삭제하세요.
+* `fetchCardData()` 함수를 삭제하세요.
+* 새로운 **wrapper** 컴포넌트인 `<CardWrapper />`를 import하세요.
+* 새로운 **스켈레톤** 컴포넌트인 `<CardsSkeleton />`을 import하세요.
+* `<CardWrapper />`를 Suspense로 감싸세요.
 
 `/app/dashboard/page.tsx`
 
@@ -421,13 +424,13 @@ export default async function CardWrapper() {
 
 페이지를 새로 고치면 모든 카드가 동시에 로드된 것을 볼 수 있어요. 여러 컴포넌트가 동시에 로드되길 원할 때 이 패턴을 사용할 수 있어요.
 
-&nbsp;
+&#x20;
 
----
+***
 
-&nbsp;
+&#x20;
 
-## 어디에 Suspense 경계를 배치할지 결정하기
+### 어디에 Suspense 경계를 배치할지 결정하기
 
 Suspense 경계를 어디에 두느냐는 몇 가지 요소에 따라 달라질 것입니다:
 
@@ -439,42 +442,42 @@ Suspense 경계를 어디에 두느냐는 몇 가지 요소에 따라 달라질 
 
 걱정하지 마세요. 정답은 없습니다.
 
-- `loading.tsx`처럼 **전체 페이지**를 스트리밍할 수 있지만, 하나의 컴포넌트가 느린 데이터를 가져와서 로딩 시간이 길어질 수 있습니다.
-- **모든 컴포넌트**를 개별적으로 스트리밍할 수 있지만, 컴포넌트가 준비되어 화면에 나타날 때 *깜빡이는 효과*가 발생할 수 있습니다.
-- **페이지 섹션**들을 스트리밍함으로써 stagger 효과도 만들 수 있습니다. 하지만 이를 위해서는 래퍼 컴포넌트를 만들어야 합니다.
+* `loading.tsx`처럼 **전체 페이지**를 스트리밍할 수 있지만, 하나의 컴포넌트가 느린 데이터를 가져와서 로딩 시간이 길어질 수 있습니다.
+* **모든 컴포넌트**를 개별적으로 스트리밍할 수 있지만, 컴포넌트가 준비되어 화면에 나타날 때 _깜빡이는 효과_가 발생할 수 있습니다.
+* **페이지 섹션**들을 스트리밍함으로써 stagger 효과도 만들 수 있습니다. 하지만 이를 위해서는 래퍼 컴포넌트를 만들어야 합니다.
 
 Suspense 경계를 어디에 두느냐는 애플리케이션에 따라 다를 것입니다. 일반적으로 필요로하는 컴포넌트 내로 데이터 가져오기를 이동시키고, 해당 컴포넌트를 Suspense로 감싸는 것이 좋은 방법입니다. 그러나 애플리케이션이 필요로 한다면, 섹션 또는 전체 페이지를 스트리밍하는 것 또한 문제가 없습니다.
 
 Suspense를 실험해보고 어떤 방식이 최선인지 확인해보세요. 이것은 사용자 경험을 더 향상시킬 수 있는 강력한 API입니다.
 
-&nbsp;
+&#x20;
 
-> ### 퀴즈 시간입니다!
+> #### 퀴즈 시간입니다!
 >
 > 지금까지 배운 것을 테스트해보세요.
 >
 > **Suspense와 데이터 가져오기를 다룰 때 일반적으로 좋은 실천 방법은 무엇인가요?**
 >
-> - A: 데이터 가져오기를 상위 컴포넌트로 이동시키기
-> - B: 데이터 가져오기에는 Suspense를 사용하지 않기
-> - C: 데이터 가져오기를 필요한 컴포넌트로 이동시키기
-> - D: 에러 경계를 위해 Suspense만 사용하기
+> * A: 데이터 가져오기를 상위 컴포넌트로 이동시키기
+> * B: 데이터 가져오기에는 Suspense를 사용하지 않기
+> * C: 데이터 가져오기를 필요한 컴포넌트로 이동시키기
+> * D: 에러 경계를 위해 Suspense만 사용하기
 >
-> &nbsp;
+> &#x20;
 >
-> #### 정답 확인
+> **정답 확인**
 >
 > **C: 데이터 가져오기를 필요한 컴포넌트로 이동시키기**
 >
 > 데이터 가져오기를 필요한 컴포넌트로 이동시킴으로써 보다 세분화된 Suspense 경계를 생성할 수 있어요. 이를 통해 특정 컴포넌트를 스트리밍하고 UI 차단을 방지할 수 있어요.
 
-&nbsp;
+&#x20;
 
----
+***
 
-&nbsp;
+&#x20;
 
-## 앞으로의 계획
+### 앞으로의 계획
 
 스트리밍과 서버 컴포넌트는 데이터 가져오기와 로딩 상태를 처리하는 새로운 방식을 제공하며, 궁극적으로 최종 사용자 경험을 향상시키는 것을 목표로 합니다.
 

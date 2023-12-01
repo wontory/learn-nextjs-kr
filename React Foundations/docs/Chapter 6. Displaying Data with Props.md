@@ -1,6 +1,8 @@
+# Chapter 6. Displaying Data with Props
+
 제 6장
 
-# Props로 데이터 표시하기
+## Props로 데이터 표시하기
 
 지금까지의 프로젝트에서는, `<Header />` 컴포넌트를 재사용하면 두 번 모두 같은 내용을 표시할 것입니다.
 
@@ -25,15 +27,15 @@ function HomePage() {
 
 마찬가지로 React 컴포넌트에도 정보를 속성으로 전달할 수 있습니다. 이러한 것을 `props`라고 부릅니다.
 
-![Props](https://nextjs.org/_next/image?url=%2Fstatic%2Fimages%2Flearn%2Ffoundations%2Fprops.png&w=1920&q=75&dpl=dpl_FQk1vqJFzbvQf7ciyg5D7QiENdN4)
+![Props](https://nextjs.org/\_next/image?url=%2Fstatic%2Fimages%2Flearn%2Ffoundations%2Fprops.png\&w=1920\&q=75\&dpl=dpl\_FQk1vqJFzbvQf7ciyg5D7QiENdN4)
 
 JavaScript 함수와 유사하게, 컴포넌트가 화면에 렌더링될 때 컴포넌트의 동작이나 표시되는 것을 변경하는 사용자 정의 인수(또는 props)를 받을 수 있도록 컴포넌트를 설계할 수 있습니다. 그런 다음 부모 컴포넌트에서 이러한 props를 자식 컴포넌트로 전달할 수 있습니다.
 
-> **참고:** React에서 데이터는 컴포넌트 트리의 아래 방향으로 흐릅니다. 이것은 *단방향 데이터 흐름*으로 언급됩니다. 다음 섹션에서 다룰 상태는 props를 통해 부모 컴포넌트에서 자식 컴포넌트로 전달될 수 있습니다.
+> **참고:** React에서 데이터는 컴포넌트 트리의 아래 방향으로 흐릅니다. 이것은 _단방향 데이터 흐름_으로 언급됩니다. 다음 섹션에서 다룰 상태는 props를 통해 부모 컴포넌트에서 자식 컴포넌트로 전달될 수 있습니다.
 
-&nbsp;
+&#x20;
 
-### Props 사용하기
+#### Props 사용하기
 
 `HomePage` 컴포넌트에서 `Header` 컴포넌트로 마치 HTML 속성을 전달하는 것처럼 사용자 정의 `title` props를 전달할 수 있습니다:
 
@@ -84,9 +86,9 @@ function Header({ title }) {
 
 브라우저에서 프로젝트를 열면 "title"이라는 단어가 실제로 표시됩니다. 이것은 React가 당신이 DOM에 문자열을 렌더링하려는 의도로 생각하기 때문입니다.
 
-&nbsp;
+&#x20;
 
-### JSX에서 변수 사용하기
+#### JSX에서 변수 사용하기
 
 정의한 변수를 사용하려면 중괄호 `{}`를 사용할 수 있습니다. 이것은 JSX 마크업 내에서 일반 JavaScript를 직접 작성할 수 있는 특별한 JSX 구문입니다.
 
@@ -168,9 +170,9 @@ function HomePage() {
 }
 ```
 
-&nbsp;
+&#x20;
 
-### 목록을 순회하는 방법
+#### 목록을 순회하는 방법
 
 표시해야 하는 데이터를 목록으로 가지고 있는 경우가 흔합니다. 배열 메서드를 사용하면 데이터를 조작하고 서로 다른 정보를 보유한 동일한 스타일의 UI 요소를 생성할 수 있습니다.
 
@@ -230,10 +232,10 @@ function HomePage() {
 }
 ```
 
-&nbsp;
+&#x20;
 
 > 추가 자료:
 >
-> - [컴포넌트에 props 전달하기](https://react.dev/learn/passing-props-to-a-component)
-> - [목록 렌더링](https://react.dev/learn/rendering-lists)
-> - [조건부 렌더링](https://react.dev/learn/conditional-rendering)
+> * [컴포넌트에 props 전달하기](https://react.dev/learn/passing-props-to-a-component)
+> * [목록 렌더링](https://react.dev/learn/rendering-lists)
+> * [조건부 렌더링](https://react.dev/learn/conditional-rendering)

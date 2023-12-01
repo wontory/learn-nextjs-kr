@@ -1,20 +1,22 @@
+# Chapter 5. Building UI with Components
+
 Chapter 5
 
-# 컴포넌트로 UI 구축하기
+## 컴포넌트로 UI 구축하기
 
 사용자 인터페이스는 **컴포넌트**라고 불리는 더 작은 구성 요소로 분해될 수 있습니다.
 
 컴포넌트를 사용하면 독립적이고 재사용 가능한 코드 스니펫을 만들 수 있습니다. 컴포넌트를 **레고 브릭**처럼 생각한다면, 개별 브릭을 가져와서 이들을 결합하여 더 큰 구조물을 형성할 수 있습니다. UI의 일부를 업데이트해야 할 때, 특정 컴포넌트 또는 브릭을 업데이트할 수 있습니다.
 
-![미디어 컴포넌트 예시](https://nextjs.org/_next/image?url=%2Fstatic%2Fimages%2Flearn%2Ffoundations%2Fcomponents.png&w=1920&q=75&dpl=dpl_FQk1vqJFzbvQf7ciyg5D7QiENdN4)
+![미디어 컴포넌트 예시](https://nextjs.org/\_next/image?url=%2Fstatic%2Fimages%2Flearn%2Ffoundations%2Fcomponents.png\&w=1920\&q=75\&dpl=dpl\_FQk1vqJFzbvQf7ciyg5D7QiENdN4)
 
 이 모듈성은 애플리케이션의 규모가 커짐에 따라 코드를 관리하기 쉽도록 합니다. 왜냐하면 애플리케이션의 다른 부분을 손대지 않고 컴포넌트를 쉽게 추가, 업데이트 및 삭제할 수 있기 때문입니다.
 
 리액트 컴포넌트의 좋은 점은 그저 자바스크립트일 뿐이라는 것입니다. 이제 우리는 자바스크립트 관점에서 리액트 컴포넌트를 어떻게 작성할 수 있는지 살펴보겠습니다:
 
-&nbsp;
+&#x20;
 
-### 컴포넌트 생성
+#### 컴포넌트 생성
 
 리액트에서 컴포넌트는 함수입니다. `script` 태그 내부에서 `header`라는 함수를 작성하세요:
 
@@ -82,9 +84,9 @@ function Header() {
 ReactDOM.render(<Header />, app);
 ```
 
-&nbsp;
+&#x20;
 
-### 컴포넌트 중첩
+#### 컴포넌트 중첩
 
 일반적으로 애플리케이션은 하나의 컴포넌트 이상의 내용을 포함합니다. 리액트 컴포넌트를 일반 HTML 요소처럼 서로 중첩할 수 있습니다.
 
@@ -120,9 +122,9 @@ function HomePage() {
 ReactDOM.render(<Header />, app);
 ```
 
-&nbsp;
+&#x20;
 
-### 컴포넌트 트리
+#### 컴포넌트 트리
 
 이와 같은 방식으로 리액트 컴포넌트를 중첩하여 컴포넌트 트리를 형성할 수 있습니다.
 
@@ -148,9 +150,9 @@ function HomePage() {
 ReactDOM.render(<HomePage />, app);
 ```
 
-&nbsp;
+&#x20;
 
 > 추가 자료:
 >
-> - [첫 컴포넌트](https://react.dev/learn/your-first-component)
-> - [컴포넌트 가져오기 및 내보내기](https://react.dev/learn/importing-and-exporting-components)
+> * [첫 컴포넌트](https://react.dev/learn/your-first-component)
+> * [컴포넌트 가져오기 및 내보내기](https://react.dev/learn/importing-and-exporting-components)
