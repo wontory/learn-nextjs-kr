@@ -12,8 +12,12 @@ Chapter 11
 >
 > 다음과 같은 내용을 다룰 예정입니다.
 >
-> * Next.js API인 `searchParams`, `usePathname`, `useRouter`의 사용 방법 배우기
-> * URL 검색 매개변수를 사용하여 검색과 페이지네이션 구현하기
+> - Next.js API인 `searchParams`, `usePathname`, `useRouter`의 사용 방법 배우기
+> - URL 검색 매개변수를 사용하여 검색과 페이지네이션 구현하기
+
+&#x20;
+
+---
 
 &#x20;
 
@@ -63,15 +67,23 @@ export default async function Page() {
 
 &#x20;
 
+---
+
+&#x20;
+
 ### 왜 URL 검색 매개변수를 사용할까요?
 
 위에서 언급한대로 검색 상태를 관리하기 위해 URL 검색 매개변수를 사용할 것입니다. 이 패턴은 클라이언트 측 상태로 작업하는 데 익숙하다면 새로울 수 있습니다.
 
 URL 매개변수를 사용하는 검색의 몇 가지 이점은 다음과 같습니다:
 
-* **북마크 및 공유 가능한 URL**: 검색 매개변수가 URL에 포함되어 있기 때문에 사용자는 애플리케이션의 현재 상태를 북마크하여 나중에 참조하거나 공유할 수 있습니다.
-* **서버 측 렌더링 및 초기 로드**: URL 매개변수는 초기 상태를 렌더링하는 데 직접적으로 사용될 수 있어 서버 렌더링을 처리하기 쉽습니다.
-* **분석 및 추적**: URL에 검색 쿼리와 필터가 직접 포함되어 있기 때문에 추가적인 클라이언트 측 로직 없이 사용자 행동을 추적하기가 더 쉽습니다.
+- **북마크 및 공유 가능한 URL**: 검색 매개변수가 URL에 포함되어 있기 때문에 사용자는 애플리케이션의 현재 상태를 북마크하여 나중에 참조하거나 공유할 수 있습니다.
+- **서버 측 렌더링 및 초기 로드**: URL 매개변수는 초기 상태를 렌더링하는 데 직접적으로 사용될 수 있어 서버 렌더링을 처리하기 쉽습니다.
+- **분석 및 추적**: URL에 검색 쿼리와 필터가 직접 포함되어 있기 때문에 추가적인 클라이언트 측 로직 없이 사용자 행동을 추적하기가 더 쉽습니다.
+
+&#x20;
+
+---
 
 &#x20;
 
@@ -79,9 +91,9 @@ URL 매개변수를 사용하는 검색의 몇 가지 이점은 다음과 같습
 
 다음은 검색 기능을 구현하는 데 사용할 Next.js 클라이언트 훅들입니다:
 
-* **`useSearchParams`** - 현재 URL의 매개변수에 액세스할 수 있게 합니다. 예를 들어 이 URL `/dashboard/invoices?page=1&query=pending`의 검색 매개변수는 다음과 같이 보일 것입니다: `{page: '1', query: 'pending'}`.
-* **`usePathname`** - 현재 URL의 경로명을 읽을 수 있게 합니다. 예를 들어 `/dashboard/invoices` 경로의 경우, `usePathname`은 `'/dashboard/invoices'`를 반환합니다.
-* **`useRouter`** - 클라이언트 구성 요소 내에서 라우트 간에 탐색을 가능하게 합니다. [여러 가지 방법](https://nextjs.org/docs/app/api-reference/functions/use-router#userouter)을 사용할 수 있습니다.
+- **`useSearchParams`** - 현재 URL의 매개변수에 액세스할 수 있게 합니다. 예를 들어 이 URL `/dashboard/invoices?page=1&query=pending`의 검색 매개변수는 다음과 같이 보일 것입니다: `{page: '1', query: 'pending'}`.
+- **`usePathname`** - 현재 URL의 경로명을 읽을 수 있게 합니다. 예를 들어 `/dashboard/invoices` 경로의 경우, `usePathname`은 `'/dashboard/invoices'`를 반환합니다.
+- **`useRouter`** - 클라이언트 구성 요소 내에서 라우트 간에 탐색을 가능하게 합니다. [여러 가지 방법](https://nextjs.org/docs/app/api-reference/functions/use-router#userouter)을 사용할 수 있습니다.
 
 구현 단계에 대한 간단한 개요입니다:
 
@@ -96,8 +108,8 @@ URL 매개변수를 사용하는 검색의 몇 가지 이점은 다음과 같습
 
 `<Search>` 컴포넌트 (`/app/ui/search.tsx`)로 이동하면 다음을 볼 수 있습니다:
 
-* `"use client"` - 이는 클라이언트 컴포넌트로, 이벤트 리스너와 훅을 사용할 수 있음을 의미합니다.
-* `<input>` - 이는 검색 입력란입니다.
+- `"use client"` - 이는 클라이언트 컴포넌트로, 이벤트 리스너와 훅을 사용할 수 있음을 의미합니다.
+- `<input>` - 이는 검색 입력란입니다.
 
 `handleSearch` 함수를 만들고, `<input>` 요소에 `onChange` 리스너를 추가하세요. `onChange`는 입력 값이 변경될 때마다 `handleSearch`를 호출할 것입니다.
 
@@ -237,10 +249,10 @@ export default function Search() {
 
 여기에서 무슨 일이 일어나는지 살펴보겠습니다:
 
-* `${pathname}`은 현재 경로입니다. 여러분의 경우 `"/dashboard/invoices"`입니다.
-* 사용자가 검색 바에 입력하는 동안 `params.toString()`은 이 입력을 URL에 친화적인 형식으로 변환합니다.
-* `replace(${pathname}?${params.toString()})`은 사용자의 검색 데이터로 URL을 업데이트합니다. 예를 들어 사용자가 "Lee"를 검색하면 `/dashboard/invoices?query=lee`와 같이 URL이 업데이트됩니다.
-* Next.js의 클라이언트 측 탐색 덕분에 페이지를 다시 로드하지 않고 URL이 업데이트됩니다. (이에 대해 [페이지 간 탐색](https://nextjs.org/learn/dashboard-app/navigating-between-pages) 챕터에서 배웠습니다).
+- `${pathname}`은 현재 경로입니다. 여러분의 경우 `"/dashboard/invoices"`입니다.
+- 사용자가 검색 바에 입력하는 동안 `params.toString()`은 이 입력을 URL에 친화적인 형식으로 변환합니다.
+- `replace(${pathname}?${params.toString()})`은 사용자의 검색 데이터로 URL을 업데이트합니다. 예를 들어 사용자가 "Lee"를 검색하면 `/dashboard/invoices?query=lee`와 같이 URL이 업데이트됩니다.
+- Next.js의 클라이언트 측 탐색 덕분에 페이지를 다시 로드하지 않고 URL이 업데이트됩니다. (이에 대해 [페이지 간 탐색](https://nextjs.org/learn/dashboard-app/navigating-between-pages) 챕터에서 배웠습니다).
 
 &#x20;
 
@@ -343,8 +355,8 @@ export default async function InvoicesTable({
 >
 > 두 가지 다른 방식으로 검색 매개변수를 추출했습니다. 어느 것을 사용할지는 클라이언트 또는 서버에서 작업하는지에 따라 달라집니다.
 >
-> * `<Search>`는 클라이언트 컴포넌트이므로 `useSearchParams()` 훅을 사용하여 클라이언트에서 매개변수에 액세스했습니다.
-> * `<Table>`은 자체 데이터를 가져오는 서버 컴포넌트이므로 페이지에서 `searchParams` prop을 컴포넌트로 전달할 수 있습니다.
+> - `<Search>`는 클라이언트 컴포넌트이므로 `useSearchParams()` 훅을 사용하여 클라이언트에서 매개변수에 액세스했습니다.
+> - `<Table>`은 자체 데이터를 가져오는 서버 컴포넌트이므로 페이지에서 `searchParams` prop을 컴포넌트로 전달할 수 있습니다.
 >
 > 일반적으로 클라이언트에서 매개변수를 읽으려면 `useSearchParams()` 훅을 사용하는 것이 좋습니다. 이렇게 하면 다시 서버로 돌아갈 필요가 없습니다.
 
@@ -445,10 +457,10 @@ const handleSearch = useDebouncedCallback((term) => {
 >
 > **검색 기능에서 디바운싱이 해결하는 문제는 무엇인가요?**
 >
-> * A: 데이터베이스 쿼리 속도를 높입니다.
-> * B: URL 북마크 기능을 추가합니다.
-> * C: 매 입력마다 데이터베이스 쿼리를 방지합니다.
-> * D: SEO 최적화에 도움이 됩니다.
+> - A: 데이터베이스 쿼리 속도를 높입니다.
+> - B: URL 북마크 기능을 추가합니다.
+> - C: 매 입력마다 데이터베이스 쿼리를 방지합니다.
+> - D: SEO 최적화에 도움이 됩니다.
 >
 > &#x20;
 >
@@ -457,6 +469,10 @@ const handleSearch = useDebouncedCallback((term) => {
 > **C: 매 입력마다 데이터베이스 쿼리를 방지합니다.**
 >
 > 맞았습니다! 디바운싱은 키를 누를 때마다 새로운 데이터베이스 쿼리를 방지하여 리소스를 절약합니다.
+
+&#x20;
+
+---
 
 &#x20;
 
@@ -589,9 +605,9 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
 
 여기에서 무슨 일이 일어나는지 살펴보겠습니다:
 
-* `createPageURL`은 현재 검색 매개변수의 인스턴스를 만듭니다.
-* 그런 다음 "page" 매개변수를 제공된 페이지 번호로 업데이트합니다.
-* 마지막으로 경로 이름과 업데이트된 검색 매개변수를 사용하여 전체 URL을 생성합니다.
+- `createPageURL`은 현재 검색 매개변수의 인스턴스를 만듭니다.
+- 그런 다음 "page" 매개변수를 제공된 페이지 번호로 업데이트합니다.
+- 마지막으로 경로 이름과 업데이트된 검색 매개변수를 사용하여 전체 URL을 생성합니다.
 
 나머지 `<Pagination>` 컴포넌트는 스타일링과 다양한 상태 (첫 번째, 마지막, 활성, 비활성 등)를 다룹니다. 이 강의에서는 자세히 다루지 않겠지만, 코드를 살펴보고 `createPageURL`이 어디에서 호출되는지 확인해보세요.
 
@@ -625,14 +641,18 @@ export default function Search({ placeholder }: { placeholder: string }) {
 
 &#x20;
 
+---
+
+&#x20;
+
 ### 요약
 
 축하합니다! URL 매개변수와 Next.js API를 사용하여 검색 및 페이지네이션을 구현했습니다.
 
 이 장에서는 다음과 같은 내용을 다루었습니다:
 
-* 클라이언트 상태 대신 URL 검색 매개변수를 사용하여 검색 및 페이지네이션을 처리했습니다.
-* 서버에서 데이터를 가져왔습니다.
-* 더 부드러운 클라이언트 측 전환을 위해 `useRouter` 라우터 훅을 사용했습니다.
+- 클라이언트 상태 대신 URL 검색 매개변수를 사용하여 검색 및 페이지네이션을 처리했습니다.
+- 서버에서 데이터를 가져왔습니다.
+- 더 부드러운 클라이언트 측 전환을 위해 `useRouter` 라우터 훅을 사용했습니다.
 
 이러한 패턴은 클라이언트 측 React 작업 시 사용하는 것과는 다르지만, URL 검색 매개변수를 사용하고 이 상태를 서버로 옮기는 장점을 더 잘 이해할 수 있게 되었을 것입니다.
