@@ -87,6 +87,8 @@ export default function Page() {
 >
 > 정답입니다! 이를 통해 사용자들은 JavaScript가 아직 로드되지 않았거나 로드에 실패했을 때에도 폼과 데이터를 제출할 수 있습니다.
 
+&nbsp;
+
 이 모든 것이 어떻게 동작하는지 살펴봅시다!
 
 &nbsp;
