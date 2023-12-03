@@ -15,7 +15,11 @@ Chapter 12
 > - 특정 ID를 가진 동적 라우트 세그먼트 생성하는 방법.
 > - 낙관적 업데이트를 위해 리액트의 `useFormStatus` 훅 사용 방법.
 
+&nbsp;
+
 ---
+
+&nbsp;
 
 ## 서버 액션이란 무엇인가요?
 
@@ -23,7 +27,11 @@ Chapter 12
 
 웹 애플리케이션의 보안은 매우 중요합니다. 다양한 위협에 취약할 수 있기 때문입니다. 여기서 서버 액션이 등장합니다. 서버 액션은 POST 요청, 암호화된 클로저, 엄격한 입력 확인, 오류 메시지 해싱, 호스트 제한 등과 같은 기술을 통해 애플리케이션의 안전성을 높이고 데이터를 보호하며 인가된 액세스를 보장합니다.
 
+&nbsp;
+
 ---
+
+&nbsp;
 
 ## 서버 액션과 함께 폼 사용하기
 
@@ -48,11 +56,17 @@ export default function Page() {
 
 서버 컴포넌트 내에서 서버 액션을 호출하는 장점은 점진적인 향상입니다. 클라이언트에서 JavaScript가 비활성화되어 있더라도 폼이 작동합니다.
 
+&nbsp;
+
 ---
+
+&nbsp;
 
 ## Next.js와 서버 액션
 
 서버 액션은 Next.js [캐싱](https://nextjs.org/docs/app/building-your-application/caching)과 깊게 통합됩니다. 서버 액션을 통해 폼을 제출하면 데이터를 변경할 뿐만 아니라 `revalidatePath`와 `revalidateTag`와 같은 API를 사용하여 관련 캐시를 재검증할 수도 있습니다.
+
+&nbsp;
 
 > ### 퀴즈 시간입니다!
 >
@@ -75,7 +89,11 @@ export default function Page() {
 
 이 모든 것이 어떻게 동작하는지 살펴봅시다!
 
+&nbsp;
+
 ---
+
+&nbsp;
 
 ## 송장 생성하기
 
@@ -87,6 +105,8 @@ export default function Page() {
 4. 데이터를 유효성 검사하고 데이터베이스에 삽입할 수 있도록 준비합니다.
 5. 데이터를 삽입하고 발생하는 오류를 처리합니다.
 6. 캐시를 재검증하고 사용자를 송장 페이지로 리디렉션합니다.
+
+&nbsp;
 
 ### 1. 새로운 경로와 양식 생성하기
 
@@ -136,6 +156,8 @@ export default async function Page() {
 [http://localhost:3000/dashboard/invoices/create](http://localhost:3000/dashboard/invoices/create)에서는 다음과 같은 UI가 표시됩니다:
 
 ![Breadcrumbs와 폼이 있는 송장 생성 페이지](https://nextjs.org/_next/image?url=%2Flearn%2Flight%2Fcreate-invoice-page.png&w=1920&q=75&dpl=dpl_GGugRB3M3WE9C8xcmftCsUL7LkbG)
+
+&nbsp;
 
 ### 2. 서버 액션 생성하기
 
@@ -197,6 +219,8 @@ export default function Form({
 > 반면 React에서 `action` 속성은 특별한 프롭으로 간주됩니다. React는 이를 기반으로 액션을 호출할 수 있도록 빌드됩니다.  
 > 서버 액션은 내부적으로 `POST` API 엔드포인트를 생성합니다. 이것이 서버 액션을 사용할 때 API 엔드포인트를 수동으로 만들 필요가 없는 이유입니다.
 
+&nbsp;
+
 ### 3. `formData`에서 데이터 추출하기
 
 `actions.ts` 파일로 돌아가서 `formData`의 값을 추출해야 합니다. [여러 방법](https://developer.mozilla.org/en-US/docs/Web/API/FormData/append) 중에서 이 예제에서는 `.get(name)` 메서드를 사용해 봅시다.
@@ -224,6 +248,8 @@ export async function createInvoice(formData: FormData) {
 
 이제 데이터가 객체 형태로 되어 있으므로 작업하기가 훨씬 쉬워졌습니다!
 
+&nbsp;
+
 ### 4. 데이터 유효성 검사 및 준비
 
 양식 데이터를 데이터베이스에 보내기 전에 올바른 형식과 타입을 가지고 있는지 확인하고 싶을 거에요. 이전에 배운 것처럼, 송장 테이블은 다음과 같은 형식의 데이터일 것입니다:
@@ -241,6 +267,8 @@ export type Invoice = {
 ```
 
 현재는 양식에서 `customer_id`, `amount`, `status`만 가지고 있습니다.
+
+&nbsp;
 
 #### 타입 검사 및 형변환
 
@@ -295,6 +323,8 @@ export async function createInvoice(formData: FormData) {
 }
 ```
 
+&nbsp;
+
 #### 센트 단위로 값 저장하기
 
 보다 정확한 계산을 위해 자바스크립트 부동 소수점 오류를 제거하고자 데이터베이스에 금액 값을 센트 단위로 저장하는 것이 일반적입니다.
@@ -315,6 +345,8 @@ export async function createInvoice(formData: FormData) {
 }
 ```
 
+&nbsp;
+
 #### 새로운 날짜 생성하기
 
 마지막으로, 송장 작성 날짜를 "YYYY-MM-DD" 형식으로 만들어 보겠습니다:
@@ -333,6 +365,8 @@ export async function createInvoice(formData: FormData) {
   const date = new Date().toISOString().split('T')[0];
 }
 ```
+
+&nbsp;
 
 ### 5. 데이터베이스에 데이터 삽입하기
 
@@ -361,6 +395,8 @@ export async function createInvoice(formData: FormData) {
 ```
 
 현재는 오류를 처리하지 않고 있습니다. 다음 장에서 처리하겠습니다. 지금은 다음 단계로 넘어가보죠.
+
+&nbsp;
 
 ### 6. 재검증 및 리디렉션
 
@@ -415,7 +451,11 @@ export async function createInvoice(formData: FormData) {
 1. 제출하면 `/dashboard/invoices` 경로로 리디렉션됩니다.
 2. 테이블 상단에 새로운 송장이 표시됩니다.
 
+&nbsp;
+
 ---
+
+&nbsp;
 
 ## 송장 업데이트하기
 
@@ -428,6 +468,8 @@ export async function createInvoice(formData: FormData) {
 3. 데이터베이스에서 특정 송장을 가져옵니다.
 4. 송장 데이터로 양식을 미리 채웁니다.
 5. 데이터베이스에서 송장 데이터를 업데이트합니다.
+
+&nbsp;
 
 ### 1. 송장 `id`가 포함된 동적 라우트 세그먼트 생성
 
@@ -483,6 +525,8 @@ export function UpdateInvoice({ id }: { id: string }) {
 }
 ```
 
+&nbsp;
+
 ### 2. 페이지 매개변수에서 송장 `id` 읽어오기
 
 다시 `<Page>` 컴포넌트로 돌아가서 다음 코드를 붙여넣으세요:
@@ -530,6 +574,8 @@ export default async function Page({ params }: { params: { id: string } }) {
 }
 ```
 
+&nbsp;
+
 ### 3. 특정 송장 가져오기
 
 그런 다음:
@@ -567,6 +613,8 @@ URL도 `http://localhost:3000/dashboard/invoice/uuid/edit`와 같이 `id`가 업
 > **UUID vs. 자동 증가 키**  
 > 우리는 키를 증가시키지 않고(예: 1, 2, 3 등) UUID를 사용합니다. 이것은 URL을 길게 만들지만 UUID를 사용하면 ID 충돌의 위험이 사라지고 전 세계적으로 고유하며 열거 공격 위험을 줄여 이상적인 대규모 데이터베이스를 만들 수 있습니다.  
 > 그러나 더 깔끔한 URL을 원한다면, 자동으로 증가하는 키를 사용하는 것을 선호할 수 있습니다.
+
+&nbsp;
 
 ### 4. 서버 액션에 `id` 전달하기
 
@@ -645,7 +693,11 @@ export async function updateInvoice(id: string, formData: FormData) {
 
 송장을 편집하여 테스트해보세요. 양식을 제출한 후에는 송장 페이지로 리디렉션되어 송장이 업데이트되어야 합니다.
 
+&nbsp;
+
 ---
+
+&nbsp;
 
 ## 송장 삭제하기
 
@@ -685,7 +737,11 @@ export async function deleteInvoice(id: string) {
 
 이 액션은 `/dashboard/invoices` 경로에서 호출되기 때문에 `redirect`를 호출할 필요가 없습니다. `revalidatePath`를 호출하면 새로운 서버 요청이 발생하여 테이블을 다시 렌더링합니다.
 
+&nbsp;
+
 ---
+
+&nbsp;
 
 ## 추가 학습 자료
 
