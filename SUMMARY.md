@@ -30,3 +30,4 @@
     - [Chapter 11. Adding Search and Pagination](<Learn Next.js/docs/Chapter 11. Adding Search and Pagination.md>)
     - [Chapter 12. Mutating Data](<Learn Next.js/docs/Chapter 12. Mutating Data.md>)
     - [Chapter 13. Handling Errors](<Learn Next.js/docs/Chapter 13. Handling Errors.md>)
+    - [Chapter 14. Improving Accessibility](<Learn Next.js/docs/Chapter 14. Improving Accessibility.md>)
