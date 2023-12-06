@@ -4,6 +4,8 @@ Chapter 14
 
 이전 장에서는 오류(404 오류 포함)를 잡고 사용자에게 대체 콘텐츠를 표시하는 방법을 살펴보았습니다. 그러나 우리는 폼 유효성 검사라는 아직 해결해야 할 퍼즐 조각이 있습니다. Server Actions를 사용하여 서버 측 유효성 검사를 구현하고, `useFormState` 훅을 사용하여 어떻게 폼 오류를 보여줄 수 있는지 살펴봅시다. 그리고 이 모든 것을 할 때 접근성을 고려해봅시다!
 
+&nbsp;
+
 > ### 이번 장에서는...
 >
 > 다음과 같은 내용을 다룰 예정입니다.
@@ -12,7 +14,11 @@ Chapter 14
 > - 서버 측 폼 유효성 검사를 구현하는 방법.
 > - React의 useFormState 훅을 사용하여 폼 오류를 처리하고 사용자에게 표시하는 방법.
 
+&nbsp;
+
 ---
+
+&nbsp;
 
 ## 접근성이란 무엇인가요?
 
@@ -22,7 +28,11 @@ Chapter 14
 
 > 접근성에 대해 더 알고 싶다면 [web.dev](https://web.dev/)에서 제공하는 [접근성 학습](https://web.dev/learn/accessibility/) 코스를 추천합니다.
 
+&nbsp;
+
 ---
+
+&nbsp;
 
 ## Next.js에서 ESLint 접근성 플러그인 사용하기
 
@@ -88,7 +98,11 @@ either with meaningful text, or an empty string for decorative images. jsx-a11y/
 
 이 경고는 애플리케이션을 Vercel에 배포하려고 할 때도 빌드 로그에 표시될 것입니다. 왜냐하면 `next lint`가 빌드 프로세스의 일부로 실행되기 때문입니다. 따라서 애플리케이션을 배포하기 전에 로컬에서 `lint`를 실행하여 접근성 문제를 잡을 수 있습니다.
 
+&nbsp;
+
 ---
+
+&nbsp;
 
 ## 폼 접근성 향상
 
@@ -100,13 +114,19 @@ either with meaningful text, or an empty string for decorative images. jsx-a11y/
 
 이러한 실천 방법은 여러 사용자에게 폼을 더 접근성 있게 만드는 데 좋은 기반을 제공합니다. 그러나 이는 **폼 유효성 검사**와 **오류**에 대한 것은 다루지 않습니다.
 
+&nbsp;
+
 ---
+
+&nbsp;
 
 ## 폼 유효성 검사
 
 [http://localhost:3000/dashboard/invoices/create](http://localhost:3000/dashboard/invoices/create)로 이동하여 빈 폼을 제출해보세요. 무슨 일이 일어나나요?
 
 에러가 발생합니다! 이는 빈 폼 값을 서버 액션에 보내기 때문입니다. 이를 방지하려면 폼을 클라이언트나 서버에서 유효성 검사하는 것이 좋습니다.
+
+&nbsp;
 
 ### 클라이언트 측 유효성 검사
 
@@ -130,6 +150,8 @@ either with meaningful text, or an empty string for decorative images. jsx-a11y/
 이 접근 방식은 대부분의 보조 기술(AT)이 브라우저 유효성 검사를 지원하기 때문에 일반적으로 괜찮습니다.
 
 클라이언트 측 유효성 검사의 대안은 서버 측 유효성 검사입니다. 다음 섹션에서 이를 어떻게 구현할 수 있는지 살펴봅시다. 지금은, `required` 속성을 추가한 경우 삭제하세요.
+
+&nbsp;
 
 ### 서버 측 유효성 검사
 
@@ -383,6 +405,8 @@ export async function createInvoice(prevState: State, formData: FormData) {
 - `id="customer-error"`: 이 `id` 속성은 `select` 입력의 에러 메시지를 보유하는 HTML 요소를 고유하게 식별합니다. 이는 aria-describedby가 관계를 설정하기 위해 필요합니다.
 - `aria-live="polite"`: 스크린 리더는 `div` 내부의 에러가 업데이트될 때 사용자에게 정중하게 알려줍니다. 내용이 변경되면(예: 사용자가 에러를 수정할 때) 이 변경 사항을 알리지만 사용자를 방해하지 않도록 합니다.
 
+&nbsp;
+
 # 실습: aria 레이블 추가
 
 위의 예제를 사용하여 남은 폼 필드에 에러를 추가하세요. 또한 어떤 필드가 누락되었을 경우 폼 하단에 메시지를 표시하세요. 화면은 다음과 같이 보여야 합니다:
@@ -400,6 +424,8 @@ export async function createInvoice(prevState: State, formData: FormData) {
 - 컴포넌트에 에러를 표시하고, 접근성을 향상시키기 위해 aria 라벨을 추가하세요.
 
 준비가 되면 아래의 코드 스니펫을 확장하여 솔루션을 확인하세요:
+
+&nbsp;
 
 <details>
 
