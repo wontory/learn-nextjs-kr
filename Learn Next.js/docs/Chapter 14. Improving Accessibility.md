@@ -407,7 +407,7 @@ export async function createInvoice(prevState: State, formData: FormData) {
 
 &nbsp;
 
-# 실습: aria 레이블 추가
+# 실습: aria 라벨 추가
 
 위의 예제를 사용하여 남은 폼 필드에 에러를 추가하세요. 또한 어떤 필드가 누락되었을 경우 폼 하단에 메시지를 표시하세요. 화면은 다음과 같이 보여야 합니다:
 
