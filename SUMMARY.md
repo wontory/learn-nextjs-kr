@@ -32,3 +32,4 @@
     - [Chapter 13. Handling Errors](<Learn Next.js/docs/Chapter 13. Handling Errors.md>)
     - [Chapter 14. Improving Accessibility](<Learn Next.js/docs/Chapter 14. Improving Accessibility.md>)
     - [Chapter 15. Adding Authentication](<Learn Next.js/docs/Chapter 15. Adding Authentication.md>)
+    - [Chapter 16. Adding Metadata](<Learn Next.js/docs/Chapter 16. Adding Metadata.md>)
