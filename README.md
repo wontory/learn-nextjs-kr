@@ -1,4 +1,4 @@
-# nextjs-journey-kr
+# learn-nextjs-kr
 
 Next.js 공식 튜토리얼 따라하기
 
